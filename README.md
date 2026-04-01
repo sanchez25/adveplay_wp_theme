@@ -1,1 +1,0 @@
-# adveplay_wp_theme
