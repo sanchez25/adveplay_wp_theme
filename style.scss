@@ -1,0 +1,2312 @@
+@import './reset';
+@import './vars';
+@import './mixins';
+
+@font-face {
+    font-style: normal;
+    font-family: "Poppins";
+    font-weight: 400;
+    src: url(/wp-content/themes/adveplay-new/fonts/Poppins-Regular.ttf);
+    font-display: swap;
+}
+@font-face {
+    font-style: normal;
+    font-family: "Poppins";
+    font-weight: 700;
+    src: url(/wp-content/themes/adveplay-new/fonts/Poppins-Bold.ttf);
+    font-display: swap;
+}
+@font-face {
+    font-style: normal;
+    font-family: "QUARTZO";
+    font-weight: 700;
+    src: url(/wp-content/themes/adveplay-new/fonts/QUARTZO-Bold.ttf);
+    font-display: swap;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--main);
+    overflow-x: hidden;
+}
+
+img {
+    border-style: none;
+    max-width: 100%;
+    height: auto;
+}
+
+a:hover {
+    transition: .3s ease-out;
+}
+
+/* Header */
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 6px 12px;
+
+    @include media-up(lg) {
+        padding: 25px 25px;
+    }
+
+    @include media-up(xl) {
+        padding: 25px 72px;
+    }
+
+    @include media-up(xxl) {
+        padding: 25px 145px;
+    }
+
+    .overlay {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-logo {
+            display: flex;
+            align-items: center;
+
+            .logo {
+
+                @include media-up(lg) {
+                    width: 150px;
+                }
+
+                @include media-up(xl) {
+                    width: auto;
+                }
+
+                &__mobile {
+                    display: block;
+
+                    @include media-up(lg) {
+                        display: none;
+                    }
+                }
+
+                &__desktop {
+                    display: none;
+
+                    @include media-up(lg) {
+                        display: block;
+                    }
+                }
+            }
+
+            .burger {
+                margin-right: 12px;
+        
+                @include media-up(lg) {
+                    display: none;
+                }
+        
+                img {
+                    width: 20px;
+                    height: 15px; 
+                }
+            }
+        }
+
+        &-menu {
+            display: none;
+            margin-left: 0;
+
+            @include media-up(lg) {
+                display: flex;
+                align-items: center;
+            }
+
+            @include media-up(xxl) {
+                margin-left: 50px;
+            }
+
+            .menu-item {
+                font-size: 20px;
+                color: var(--section);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                &:first-child {
+
+                    @include media-up(lg) {
+                        margin-right: 20px;
+                    }
+
+                    @include media-up(xl) {
+                        margin-right: 30px;
+                    }
+
+                    @include media-up(xxl) {
+                        margin-right: 54px;
+                    }
+                }
+
+                &:nth-child(2) {
+
+                    @include media-up(lg) {
+                        margin-right: 20px;
+                    }
+
+                    @include media-up(xl) {
+                        margin-right: 30px;
+                    }
+
+                    @include media-up(xxl) {
+                        margin-right: 0;
+                    }
+                }
+
+                &:nth-child(4) {
+
+                    @include media-up(lg) {
+                        margin-right: 20px;
+                    }
+
+                    @include media-up(xl) {
+                        margin-right: 30px;
+                    }
+
+                    @include media-up(xxl) {
+                        margin-right: 54px;
+                    }
+                }
+            }
+
+            span {
+                display: none;
+
+                @include media-up(xxl) {
+                    display: block;
+                    margin: 0 170px 0 170px;
+                } 
+            }
+        }
+
+        &-btn {
+            display: flex;
+            align-items: center;
+
+            .btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--section);
+                border-radius: var(--radius);
+                font-weight: 700;
+                font-size: 11px;
+                line-height: 11px;
+                text-transform: uppercase;
+                background: var(--text);
+                width: 87px;
+                height: 32px;
+                transition: .3s ease-out;
+
+                &:hover {
+                    background: var(--contact-us);
+                    color: var(--text);
+                }
+
+                @include media-up(lg) {
+                    width: 176px;
+                    height: 60px;
+                    font-size: 20px;
+                    line-height: 26px;
+                    border-radius: var(--radius-desk);
+                }
+            }
+
+            /*.lang_choose {
+                margin-left: 10px;
+
+                @include media-up(lg) {
+                    margin-left: 23px;
+                }
+
+                @include media-up(xl) {
+                    margin-left: 37px;
+                }
+
+                .choose {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    cursor: pointer;
+                    padding-right: 0;
+
+                    @include media-up(lg) {
+                        padding-right: 25px;
+                    }
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 1px solid var(--section);
+
+                        @include media-up(lg) {
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 12px;
+                        right: 0;
+                        display: block;
+                        width: 15px;
+                        height: 9px;
+                        transition: .3s ease-out;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-image: url(/wp-content/themes/adveplay-new/img/down.svg);
+                    }
+                }
+            } */
+        }
+    }
+}
+
+.menu-item {
+    font-weight: 700;
+    line-height: 23px;
+}
+
+.menu_mobile {
+    background: var(--section);
+    width: 100%;
+    padding: 0 20px;
+    max-width: 250px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    display: block;
+    transition: left 0.8s;
+    z-index: 11;
+
+    .close {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 20px 0;
+
+        img {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    .menu {
+
+        .menu-item {
+            display: block;
+            color: var(--text);
+            margin-bottom: 10px;
+            font-size: 16px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.menu_mobile.show {
+    left: 0;
+    transition: left 0.8s;
+}
+
+.main {
+    background-color: var(--main);
+    position: relative;
+    height: 85vh;
+    z-index: 2;
+    overflow: hidden;
+
+    @include media-up(xl) {
+        height: 90vh;
+    } 
+
+    @include media-up(xxl) {
+        height: 95vh;
+    } 
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: -162px;
+        width: 220px;
+        height: 220px;
+        background: var(--gradient);
+        filter: blur(50px);
+        z-index: 1;
+        transform: rotate(47deg);
+        pointer-events: none;
+
+        @include media-up(lg) {
+            width: 645px;
+            height: 645px;
+            top: -100px;
+            left: -450px;
+        }
+    }
+
+    &::after {
+        content: '';
+        display: none;
+        position: absolute;
+        bottom: -350px;
+        right: -450px;
+        width: 788px;
+        height: 788px;
+        background: var(--gradient);
+        filter: blur(50px);
+        z-index: 1;
+        pointer-events: none;
+
+        @include media-up(xl) {
+            display: block;
+        }
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+        &-title {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+
+            @include media-up(lg) {
+                align-items: center;
+            }
+
+            span {
+                display: block;
+                text-transform: uppercase;
+                font-family: "QUARTZO";
+                font-weight: 700;
+                
+                &:first-child {
+                    padding-left: 24px;
+                    margin-bottom: 12px;
+                    color: var(--section);
+                    position: relative;
+                    font-size: 28px;
+                    line-height: 28px;
+
+                    @include media-up(lg) {
+                        font-size: 76px;
+                        line-height: 76px;
+                        position: absolute;
+                        left: 20px;
+                        top: -70px;
+                        z-index: 2;
+                    }
+
+                    @include media-up(xl) {
+                        font-size: 126px;
+                        line-height: 126px;
+                        left: 80px;
+                        top: -115px;
+                    }
+
+                    @include media-up(xxl) {
+                        left: 166px;
+                        top: -190px;
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: -27px;
+                        left: 5px;
+                        z-index: -1;
+                        background-image: url(/wp-content/themes/adveplay-new/img/star.svg);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        width: 75px;
+                        height: 75px;
+
+                        @include media-up(lg) {
+                            width: 150px;
+                            height: 150px;
+                            top: -50px;
+                            left: -10px;
+                        }
+
+                        @include media-up(xl) {
+                            width: 301px;
+                            height: 301px;
+                            top: -100px;
+                            left: -60px;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    padding-left: 30px;
+                    margin-bottom: 5px;
+                    font-size: 52px;
+                    line-height: 52px;
+                    
+                    @include media-up(lg) {
+                        font-size: 102px;
+                        line-height: 102px;
+                        position: absolute;
+                        left: 120px;
+                    }
+
+                    @include media-up(xl) {
+                        font-size: 158px;
+                        line-height: 158px;
+                        left: 280px;
+                    }
+
+                    @include media-up(xxl) {
+                        left: 336px;
+                        top: -75px;
+                    }
+                }
+
+                &:nth-child(3) {
+                    padding-left: 49px;
+                    color: var(--section);
+                    font-size: 78px;
+                    line-height: 78px;
+
+                    @include media-up(lg) {
+                        color: var(--text);
+                        font-size: 104px;
+                        line-height: 104px;
+                        position: absolute;
+                        right: 120px;
+                        top: -20px;
+                    }
+
+                    @include media-up(xl) {
+                        font-size: 160px;
+                        line-height: 160px;
+                        right: 70px;
+                    }
+
+                    @include media-up(xxl) {
+                        right: 370px;
+                        top: -95px;
+                    }
+                }
+
+                &:last-child {
+                    padding-left: 8px;
+                    font-size: 24px;
+                    line-height: 24px;
+                    position: relative;
+
+                    @include media-up(lg) {
+                        color: var(--section);
+                        font-size: 64px;
+                        line-height: 64px;
+                        position: absolute;
+                        right: 20px;
+                        top: 70px;
+                        z-index: 2;
+                    }
+
+                    @include media-up(xl) {
+                        font-size: 107px;
+                        line-height: 107px;
+                        right: 10px;
+                        top: 120px;
+                    }
+
+                    @include media-up(xxl) {
+                        right: 145px;
+                        top: 45px;
+                    }
+
+                    &::before {
+                        content: "Opportunity";
+                        position: absolute;
+                        top: 2px;
+                        left: 10px;
+                        -webkit-text-stroke: 0.45px var(--section);
+                        color: transparent;
+                        z-index: -1;
+
+                        @include media-up(lg) {
+                            -webkit-text-stroke: 2px var(--text);
+                            z-index: 1;
+                            top: 9px;
+                            left: 17px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .girl-img {
+            position: absolute;
+            right: -105px;
+            bottom: -10px;
+            width: 380px;
+            max-width: 100%;
+            height: auto;
+
+            @include media-up(lg) {
+                right: 209px;
+            }
+
+            @include media-up(xxl) {
+                width: 586px;
+                right: 530px;
+                bottom: 45px;
+            }
+        }
+
+        .arrow-img {
+            display: none;
+            position: absolute;
+            max-width: 100%;
+            height: auto;
+            left: 20px;
+            top: 50%;
+
+            @include media-up(lg) {
+                display: block;
+                left: auto;
+                right: 60px;
+                top: 40%;
+                width: 120px;
+            }
+
+            @include media-up(xl) {
+                width: auto;
+                top: 34%;
+                right: -20px;
+            }
+
+            @include media-up(xxl) {
+                right: 255px;
+                top: 31%;
+            }
+        }
+
+        .arrow-small {
+            display: block;
+            position: absolute;
+            max-width: 100%;
+            height: auto;
+            left: 20px;
+            top: 48%;
+
+            @include media-up(lg) {
+                display: none;
+            }
+        }
+
+        .star-small {
+            position: absolute;
+            transform: translateY(-50%);
+        }
+
+        .star-small.one {
+            width: 32px;
+            height: 32px;
+            left: 68px;
+            bottom: 120px;
+
+            @include media-up(lg) {
+                left: auto;
+                right: 50px;
+                bottom: 60px; 
+            }
+
+            @include media-up(xl) {
+                width: 68px;
+                height: 68px;
+                bottom: 0px; 
+            } 
+
+            @include media-up(xxl) {
+                right: 110px;
+                bottom: 215px;
+            }
+        }
+
+        .star-small.two {
+            width: 18px;
+            height: 18px;
+            left: 47px;
+            bottom: 100px;
+
+            @include media-up(lg) {
+                left: auto;
+                right: 20px;
+            }
+
+            @include media-up(xl) {
+                width: 33px;
+                height: 33px;
+                bottom: 80px;
+            } 
+
+            @include media-up(xxl) {
+                right: 83px;
+                bottom: 296px;
+            }
+        }
+
+        .star-small.three {
+            width: 18px;
+            height: 18px;
+            left: 165px;
+            bottom: 410px;
+
+            @include media-up(lg) {
+                display: none;
+            }
+        }
+    }
+}
+
+.body_mc {
+	
+	.main {
+		
+		.main__block {
+			
+			.girl-img {
+				right: -126px;
+                width: 500px;
+
+                @include media-up(lg) {
+                    right: 230px;
+                }
+    
+                @include media-up(xxl) {
+                    width: 706px;
+                    right: 500px;
+                    bottom: 45px;
+                }
+			}
+		}
+	}
+}
+
+.section-text {
+    background: var(--section);
+    position: relative;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+
+    @include media-up(xl) {
+        border-top-right-radius: var(--radius-desk);
+        border-top-left-radius: var(--radius-desk);
+    } 
+
+    @include media-up(xxl) {
+        border-top-right-radius: var(--radius-full);
+        border-top-left-radius: var(--radius-full);
+    } 
+
+    .bomb {
+        position: absolute;
+        top: -110px;
+        width: 160px;
+        max-width: 100%;
+        height: auto;
+        left: 0;
+
+        @include media-up(lg) {
+            right: 20px;
+            width: 200px;
+            top: -100px;
+            left: auto;
+        }
+
+        @include media-up(xl) {
+            right: 30px;
+            width: 288px;
+            top: -140px;
+        }
+
+        @include media-up(xxl) {
+            right: 120px;
+        }
+    }
+
+    .text-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 25px;
+            padding: 0 35px;
+
+            @include media-up(lg) {
+                padding: 0 50px;
+                font-size: 35px;
+                line-height: 65px;
+            }
+
+            @include media-up(xl) {
+                padding: 0 150px;
+                font-size: 50px;
+                line-height: 80px;
+            }
+
+            @include media-up(xxl) {
+                padding: 0 338px;
+            }
+        }
+    }
+}
+
+.section-text.about {
+    padding: 95px 22px;
+    z-index: 3;
+    top: -15px;
+    margin-bottom: -15px;
+    background-repeat: no-repeat;
+    background-size: 100% 200%;
+    background-image: url(/wp-content/uploads/2024/09/white-back-mobile.svg);
+
+    @include media-up(xl) {
+        padding: 218px 22px 276px 22px;
+        top: -25px;
+        margin-bottom: -25px;
+		background-size: 100% 100%;
+        background-image: url(/wp-content/uploads/2024/09/white-back.svg);
+    }
+
+    @include media-up(xxl) {
+        top: -65px;
+        margin-bottom: -65px;
+    }
+}
+
+h1 {
+    margin-bottom: 39px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    text-transform: uppercase;
+    color: var(--text);
+    font-family: "QUARTZO";
+
+    @include media-up(lg) {
+        font-size: 70px;
+        line-height: 86px;
+    }
+
+    @include media-up(xl) {
+        font-size: 75px;
+        line-height: 91px;
+        margin-bottom: 60px;
+    }
+
+    @include media-up(xxl) {
+        font-size: 80px;
+        line-height: 96px;
+    }
+
+    span {
+        color: var(--section);
+        position: relative;
+        z-index: 2;
+    }
+	
+	.title-back {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-image: url(/wp-content/themes/adveplay-new/img/title-back-one-mobile.svg);
+		width: 145px;
+		height: 36px;
+
+		@include media-up(lg) {
+			background-image: url(/wp-content/themes/adveplay-new/img/title-back-one.svg);
+			width: 479px;
+			height: 118px;
+		}
+
+		.title-text {
+			font-family: "QUARTZO";
+			height: auto;
+			line-height: 1.2;
+			text-align: center;
+		}
+	}
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-transform: uppercase;
+    font-family: "QUARTZO";
+    z-index: 2;
+    position: relative;
+    margin-bottom: 50px;
+
+    @include media-up(lg) {
+        font-size: 70px;
+        line-height: 86px;
+    }
+
+    @include media-up(xl) {
+        font-size: 75px;
+        line-height: 91px;
+    }
+
+    @include media-up(xxl) {
+        font-size: 80px;
+        line-height: 96px;
+    }
+
+    span {
+        font-family: "QUARTZO";
+        color: var(--section);
+        position: relative;
+        z-index: 2;
+    }
+
+    .title-back {
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        .title-text {
+            font-family: "QUARTZO";
+            height: auto
+			line-height: 1.2;
+            text-align: center;
+        }
+    }
+}
+
+.body_mc {
+	
+	h1, h2 {
+		
+		.title-back {
+		
+			.title-text {
+				height: 23px;
+
+                @include media-up(lg) {
+                    height: 74px;
+                }
+			}
+		}
+	}
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: var(--advantages);
+    margin-bottom: 19px;
+
+    @include media-up(xl) {
+        font-size: 50px;
+        line-height: 55px;
+    }
+}
+
+.section-block {
+    position: relative;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+
+    @include media-up(xl) {
+        border-top-right-radius: var(--radius-desk);
+        border-top-left-radius: var(--radius-desk);
+    } 
+
+    @include media-up(xxl) {
+        border-top-right-radius: var(--radius-full);
+        border-top-left-radius: var(--radius-full);
+    } 
+
+    .section-content {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+
+            @include media-up(lg) {
+                flex-direction: row;
+                justify-content: center;
+            }
+        
+            &__item {
+                width: 250px;
+                height: 290px;
+                border-radius: var(--radius-card);
+                padding: 19px 26px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+                background-repeat: no-repeat;
+                background-size: contain;
+
+                @include media-up(xl) {
+                    width: 446px;
+                    height: 517px;
+                    padding: 90px 50px;
+                }
+
+                @include media-up(xxl) {
+                    padding: 50px 40px;
+                }
+    
+                &:first-child {
+                    background-image: url(/wp-content/themes/adveplay-new/img/card-one.svg);
+                    margin-bottom: 55px;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                        margin-right: 20px;
+                    }
+                }
+    
+                &:nth-child(2) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/card-two.svg);
+                    margin-bottom: 60px;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                        margin-right: 10px;
+                    }
+
+                    @include media-up(xl) {
+                        margin-right: 0;
+                    }
+                }
+    
+                &:last-child {
+                    background-image: url(/wp-content/themes/adveplay-new/img/card-three-mobile.svg);
+                    width: 274px;
+                    height: 313px;
+                    padding: 30px 40px;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                    }
+
+                    @include media-up(xl) {
+                        background-image: url(/wp-content/themes/adveplay-new/img/card-three.svg);
+                        width: 486px;
+                        height: 557px;
+                    }
+                }
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    z-index: 2;
+                    position: absolute;
+                }
+
+                h3 {
+
+                    @include media-up(xl) {
+                        font-size: 40px;
+                        line-height: 45px;
+                    }
+
+                    @include media-up(xxl) {
+                        font-size: 50px;
+                        line-height: 55px;
+                    }
+                }
+
+                p {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 17px;
+                    color: var(--advantages);
+
+                    @include media-up(xl) {
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+
+                    @include media-up(xxl) {
+                        font-size: 20px;
+                        line-height: 28px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section-block.advantages {
+    z-index: 4;
+    background-color: var(--advantages);
+    top: -30px;
+    margin-bottom: -30px;
+
+    @include media-up(xl) {
+        top: -40px;
+        margin-bottom: -40px;
+    }
+
+    @include media-up(xxl) {
+        top: -80px;
+        margin-bottom: -80px;
+    }
+
+    .hand {
+        position: absolute;
+        top: -65px;
+        right: 32px;
+        width: 103px;
+        max-width: 100%;
+        height: auto;
+        z-index: 2;
+
+        @include media-up(lg) {
+            width: 150px;
+            right: auto;
+            left: 50px;
+        }
+
+        @include media-up(xl) {
+            width: 264px;
+            top: -180px;
+        }
+
+        @include media-up(xxl) {
+            left: 193px;
+        }
+    }
+
+    .section-content {
+        padding: 106px 35px 147px 35px;
+
+        @include media-up(xl) {
+            padding: 126px 35px 235px 35px;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            right: -100px;
+            width: 156px;
+            height: 167px;
+            background: var(--gradient-card);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                width: 661px;
+                height: 320px;
+                right: -500px;
+                top: 80px;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 40%;
+            left: -100px;
+            width: 156px;
+            height: 167px;
+            background: var(--gradient-card);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                width: 493px;
+                height: 493px;
+                left: -300px;
+                top: 50%;
+            }
+        }
+
+
+        .gradient {
+            position: absolute;
+            bottom: 0;
+            right: -100px;
+            width: 156px;
+            height: 167px;
+            background: var(--gradient-card);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                display: none;
+            }
+        }
+
+        h2 {
+            color: var(--section);
+    
+            span {
+                color: var(--main);
+            }
+        }
+
+        .cards {
+
+            &__item {
+    
+                &:first-child {
+                    
+                    img {
+                        width: 149px;
+                        top: -30px;
+
+                        @include media-up(xl) {
+                            width: 265px;
+                            top: -50px;
+                        } 
+                    }
+
+                    h3 {
+                        color: var(--section);
+                    }
+
+                    p {
+                        color: var(--section);
+                    }
+                }
+    
+                &:nth-child(2) {
+
+                    @include media-up(xl) {
+                        padding: 113px 50px;
+                    }
+
+                    @include media-up(xxl) {
+                        padding: 77px 40px;
+                    }
+                    
+                    img {
+                        width: 188px;
+                        top: 15px;
+
+                        @include media-up(xl) {
+                            width: 336px;
+                            top: 30px;
+                        }
+                    }
+                }
+    
+                &:last-child {
+
+                    @include media-up(xl) {
+                        padding: 135px 55px;
+                    }
+
+                    @include media-up(xxl) {
+                        padding: 70px 55px;
+                    }
+                    
+                    img {
+                        width: 205px;
+                        top: -50px;
+
+                        @include media-up(xl) {
+                            width: 365px;
+                            top: -90px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section-text.services {
+    z-index: 5;
+    top: -45px;
+    padding: 73px 56px 110px 56px;
+    margin-bottom: -45px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(/wp-content/uploads/2024/09/white-back-mobile.svg);
+
+    @include media-up(xl) {
+        top: -55px;
+        margin-bottom: -55px;
+        padding: 147px 56px;
+        background-image: url(/wp-content/uploads/2024/09/white-back.svg);
+    }
+
+    @include media-up(xxl) {
+        top: -95px;
+        margin-bottom: -95px;
+        padding: 147px 56px 167px 56px;
+    }
+
+    .candy {
+        position: absolute;
+        top: -50px;
+        right: 50px;
+        width: 79px;
+        max-width: 100%;
+        height: auto;
+
+        @include media-up(lg) {
+            width: 145px;
+            top: -120px;
+        }
+
+        @include media-up(xl) {
+            width: 305px;
+            right: 0px;
+            top: -270px;
+        }
+        
+        @include media-up(xxl) {
+            right: 80px;
+        } 
+    }
+
+    .text-content {
+
+        h2 {
+            color: var(--text);
+
+            .title-back {
+                background-image: url(/wp-content/themes/adveplay-new/img/title-back-two-mobile.svg);
+                width: 127px;
+                height: 42px;
+
+                @include media-up(lg) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/title-back-two.svg);
+                    width: 421px;
+                    height: 139px;
+                }
+            }
+        }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include media-up(lg) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            &__services {
+                margin-bottom: 40px;
+
+                @include media-up(lg) {
+                    margin-bottom: 0;
+                    padding: 0 25px;
+                }
+
+                @include media-up(xl) {
+                    padding: 25px 50px;
+                }
+
+                @include media-up(xxl) {
+                    padding: 25px 86px;
+                }
+
+                &:first-child {
+
+                    img {
+                        width: 55px;
+                        margin-bottom: 13px;
+
+                        @include media-up(xl) {
+                            width: 87px;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+
+                    img {
+                        width: 65px;
+                        margin-bottom: 15px;
+
+                        @include media-up(xl) {
+                            width: 130px;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+
+                    img {
+                        width: 91px;
+                        margin-bottom: 19px;
+
+                        @include media-up(xl) {
+                            width: 184px;
+                        }
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+
+                    img {
+                        width: 87px;
+                        margin-bottom: 26px;
+
+                        @include media-up(xl) {
+                            width: 174px;
+                        }
+                    }
+                }
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                h3 {
+                    line-height: 29px;
+                    color: var(--text);
+
+                    @include media-up(xl) {
+                        line-height: 60px;
+                    }
+                }
+            }
+        }
+    }
+} 
+
+.section-block.clients {
+    z-index: 6;
+    top: -45px;
+    background: var(--main);
+    margin-bottom: -45px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+    @include media-up(lg) {
+        border-top-right-radius: var(--radius);
+        border-top-left-radius: var(--radius);
+    }
+
+    @include media-up(xl) {
+        border-top-right-radius: var(--radius-desk);
+        border-top-left-radius: var(--radius-desk);
+        top: -55px;
+        margin-bottom: -55px;
+    }
+
+    @include media-up(xxl) {
+        border-top-right-radius: var(--radius-full);
+        border-top-left-radius: var(--radius-full);
+        top: -95px;
+        margin-bottom: -95px;
+    }
+
+    .smile {
+        position: absolute;
+        top: -60px;
+        left: 20px;
+        width: 135px;
+        max-width: 100%;
+        height: 135px;
+        z-index: 2;
+
+        @include media-up(lg) {
+            width: 200px;
+            height: 200px;
+        }
+
+        @include media-up(xl) {
+            width: 321px;
+            height: 321px;
+            left: 40px;
+            top: -105px;
+        }
+
+        @include media-up(xxl) {
+            left: 140px;
+        }
+    }
+
+    .section-content {
+        padding: 94px 35px 85px 35px;
+
+        @include media-up(xl) {
+            padding: 122px 35px 160px 35px;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            left: -190px;
+            width: 255px;
+            height: 257px;
+            background: var(--gradient);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                top: 50px;
+                width: 605px;
+                height: 300px;
+                left: -450px;
+            }
+
+            @include media-up(xl) {
+                height: 605px;
+            }
+
+            @include media-up(xxl) {
+                top: 70px;
+                left: -350px;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -220px;
+            width: 309px;
+            height: 292px;
+            background: var(--gradient);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                width: 733px;
+                height: 450px;
+                right: -600px;
+                top: 38%;
+            }
+
+            @include media-up(xl) {
+                height: 650px;
+            }
+
+            @include media-up(xxl) {
+                right: -500px;
+            }
+        }
+
+        .gradient {
+            position: absolute;
+            bottom: 70px;
+            left: -220px;
+            width: 255px;
+            height: 257px;
+            background: var(--gradient);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                display: none;
+            }
+        }
+
+        h2 {
+            color: var(--text);
+            margin-bottom: 35px;
+
+            @include media-up(lg) {
+                margin-bottom: 55px;
+            }
+
+            .title-back {
+                color: var(--contact-us);
+                background-image: url(/wp-content/themes/adveplay-new/img/title-back-three-mobile.svg);
+                width: 107px;
+                height: 38px;
+
+                @include media-up(lg) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/title-back-three.svg);
+                    width: 349px;
+                    height: 109px;
+                }
+            }
+        }
+
+        .section-subtitle {
+            color: var(--section);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 59px;
+
+            @include media-up(lg) {
+                font-size: 32px;
+                line-height: 42px;
+            }
+
+            @include media-up(xl) {
+                font-size: 50px;
+                line-height: 60px;
+                margin-bottom: 82px;
+            }
+
+            br {
+                display: none;
+
+                @include media-up(lg) {
+                    display: block;
+                }
+            }
+        }
+
+        .cards {
+
+            &__item {
+
+                &:first-child {
+                    background-image: url(/wp-content/themes/adveplay-new/img/card-black.svg);
+                    padding-bottom: 45px;
+
+                    @include media-up(xl) {
+                        padding-bottom: 125px;
+                    }
+
+                    @include media-up(xl) {
+                        padding-bottom: 98px;
+                    }
+
+                    img {
+                        width: 126px;
+                        top: -30px;
+
+                        @include media-up(xl) {
+                            width: 224px;
+                        }
+                    }
+
+                    h3 {
+                        color: var(--section);
+                    }
+
+                    p {
+                        color: var(--section);
+                    }
+                }
+
+                &:nth-child(2) {
+                    padding-bottom: 45px;
+
+                    @include media-up(xl) {
+                        padding: 50px 45px 100px 45px;
+                    }
+
+                    @include media-up(xxl) {
+                        padding: 50px 45px 70px 45px;
+                    }
+
+                    img {
+                        width: 199px;
+                        top: -15px;
+
+                        @include media-up(xl) {
+                            width: 356px;
+                        }
+                    }
+                }
+
+                &:last-child {
+                    padding-bottom: 39px;
+
+                    @include media-up(xl) {
+                        padding: 30px 60px 120px 60px;
+                    }
+
+                    @include media-up(xxl) {
+                        padding: 30px 60px 90px 60px;
+                    }
+
+                    img {
+                        width: 198px;
+                        top: -35px;
+
+                        @include media-up(xl) {
+                            width: 354px;
+                            top: -60px;
+                        }
+                    }
+
+                    .good-vibes {
+                        position: absolute;
+                        bottom: -70px;
+                        right: -30px;
+                        width: 121px;
+                        max-width: 100%;
+                        height: auto;
+                        z-index: 2;
+                        top: auto;
+
+                        @include media-up(xl) {
+                            width: 295px;
+                            bottom: -200px;
+                        }
+
+                        @include media-up(xxl) {
+                            right: -100px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .providers {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+            @include media-up(lg) {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            @include media-up(xl) {
+                margin-top: 188px;
+            }
+
+            img {
+                width: 185px;
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 31px;
+
+                @include media-up(lg) {
+                    margin-bottom: 0;
+                    padding: 0 20px;
+                }
+
+                @include media-up(xxl) {
+                    padding: 0 40px;
+                } 
+
+                &:first-child {
+                    width: 188px;
+                    margin-bottom: 41px;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                    }
+
+                    @include media-up(xl) {
+                        width: 329px;
+                    }
+                }
+
+                &:nth-child(2) {
+                    margin-bottom: 38px;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                    }
+
+                    @include media-up(xl) {
+                        width: 324px;
+                    }
+                }
+
+                &:nth-child(3) {
+
+                    @include media-up(xl) {
+                        width: 289px;
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+
+                    @include media-up(lg) {
+                        margin-bottom: 0;
+                    }
+
+                    @include media-up(xl) {
+                        width: 200px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.rotate-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background: var(--text);
+    left: -10px;
+    width: 105vw;
+    z-index: 9;
+    transform: rotate(-3deg);
+    top: -25px;
+
+    @include media-up(lg) {
+        height: 90px;
+        left: -95px;
+        width: 110vw;
+        top: auto;
+        transform: rotate(-4deg);
+    }
+
+    @include media-up(xl) {
+        height: 191px;
+        left: -150px;
+        width: 120vw;
+    }
+
+    @include media-up(xxl) {
+        transform: rotate(-5deg);
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 19px;
+        color: var(--contact-us);
+        text-transform: uppercase;
+        font-family: "QUARTZO";
+        padding-top: 5px;
+
+        @include media-up(lg) {
+            font-size: 45px;
+            line-height: 61px;
+            padding-top: 10px;
+        }
+
+        @include media-up(xl) {
+            font-size: 60px;
+            line-height: 76px;
+            padding-top: 15px;
+        }
+
+        @include media-up(xxl) {
+            font-size: 80px;
+            line-height: 96px;
+            padding-top: 15px;
+        }
+    }
+
+    span {
+        font-family: "QUARTZO";
+        color: var(--section);
+    }
+}
+
+.section-text.contact {
+    padding: 85px 23px 110px 23px;
+    top: -45px;
+    border-radius: 0;
+    z-index: 7;
+    margin-bottom: -45px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(/wp-content/uploads/2024/09/white-back-mobile.svg);
+
+    @include media-up(lg) {
+        padding: 140px 23px;
+    }
+
+    @include media-up(xl) {
+        top: -55px;
+        margin-bottom: -55px;
+        padding: 220px 23px;
+        background-image: url(/wp-content/uploads/2024/09/white-back.svg);
+    }
+
+    @include media-up(xxl) {
+        top: -95px;
+        margin-bottom: -95px;
+    }
+
+    .text-content {
+
+        h2 {
+            color: var(--text);
+            margin-bottom: 40px;
+
+            .title-back {
+                color: var(--section);
+                background-image: url(/wp-content/themes/adveplay-new/img/title-back-four-mobile.svg);
+                width: 207px;
+                height: 35px;
+
+                @include media-up(lg) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/title-back-four.svg);
+                    width: 700px;
+                    height: 118px;
+                }
+            }
+        }
+
+        p {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 0;
+            width: 250px;
+
+            @include media-up(lg) {
+                width: 900px;
+            }
+
+            @include media-up(xl) {
+                width: 1240px;
+                margin-bottom: 80px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -65px;
+                right: -20px;
+                display: block;
+                width: 54px;
+                height: 75px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url(/wp-content/themes/adveplay-new/img/arrow-contact-mobile.svg);
+
+                @include media-up(lg) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/arrow-contact.svg);
+                    width: 111px;
+                    height: 138px;
+                    right: 100px;
+                    bottom: -90px;
+                }
+
+                @include media-up(xl) {
+                    width: 200px;
+                    height: 242px;
+                    bottom: -180px;
+                    right: 150px;
+                }
+            }
+        }
+
+        .btn {
+            background-color: var(--contact-us);
+            border: 3px solid var(--section);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: uppercase;
+            font-family: "QUARTZO";
+            padding-top: 5px;
+            width: 140px;
+            height: 39px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--radius-contact);
+            box-shadow: var(--shadow-btn);
+            position: relative;
+
+            &:hover {
+
+                &::before {
+                    transform: rotate(10deg);
+                }
+            }
+
+            @include media-up(lg) {
+                width: 200px;
+                height: 50px;
+            }
+
+            @include media-up(xl) {
+                width: 438px;
+                height: 115px;
+                border-radius: 57px;
+                border: 10px solid var(--section);
+                font-size: 53px;
+                line-height: 63px;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -35px;
+                left: -70px;
+                width: 99px;
+                height: 83px;
+                background-image: url(/wp-content/uploads/2024/09/feelin-good.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                transition: .3s ease-out;
+
+                @include media-up(xl) {
+                    width: 358px;
+                    height: 298px;
+                    top: -120px;
+                    left: -265px;
+                }
+            }
+        }
+    }
+}
+
+.body_mc {
+
+    .section-text.contact {
+
+        .text-content {
+
+            .btn {
+
+                @include media-up(xl) {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+.section-block.questions {
+    z-index: 8;
+    top: -60px;
+    background: var(--main);
+    margin-bottom: -60px;
+
+    @include media-up(xl) {
+        top: -70px;
+        margin-bottom: -70px;
+    }
+
+    .section-content {
+        padding: 50px 27px 40px 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include media-up(xl) {
+            padding: 98px 27px 100px 27px;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -220px;
+            right: -70px;
+            width: 255px;
+            height: 257px;
+            background: var(--gradient);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+
+            @include media-up(lg) {
+                width: 600px;
+                height: 300px;
+                right: -400px;
+                bottom: -150px;
+            }
+        }
+
+        .questions-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include media-up(xl) {
+                width: 50%;
+            }
+        }
+
+        h2 {
+            color: var(--section);
+            width: 226px;
+
+            @include media-up(lg) {
+                font-size: 24px;
+                line-height: 29px;
+            }
+
+            @include media-up(xl) {
+                width: auto;
+                font-size: 53px;
+                line-height: 63px;
+            }
+
+            .title-back {
+                background-image: url(/wp-content/themes/adveplay-new/img/title-back-five-mobile.svg);
+                width: 226px;
+                height: 48px;
+
+                @include media-up(xl) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/title-back-five.svg);
+                    width: 479px;
+                    height: 118px;
+                }
+            }
+        }
+
+        p {
+            width: 270px;
+            color: var(--section);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19px;
+            position: relative;
+            margin-bottom: 39px;
+
+            @include media-up(xl) {
+                margin-bottom: 0;
+                font-size: 38px;
+                line-height: 46px;
+                width: auto;
+            }
+
+            @include media-up(xxl) {
+                width: 804px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: -52px;
+                left: 0;
+                display: block;
+                width: 60px;
+                height: 71px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url(/wp-content/themes/adveplay-new/img/arrow-yellow-mobile.svg);
+
+                @include media-up(xl) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/arrow-yellow.svg);
+                    width: 104px;
+                    height: 164px;
+                    top: -140px;
+                }
+
+                @include media-up(xxl) {
+                    left: 50px;
+                }
+            }
+
+            a {
+                font-weight: 700;
+                color: var(--section);
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .join {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 267px;
+            height: 68px;
+            background-image: url(/wp-content/themes/adveplay-new/img/join.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 33px;
+
+            @include media-up(xl) {
+                width: 590px;
+                height: 139px;
+                margin-bottom: 68px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -45px;
+                right: 0;
+                display: block;
+                width: 46px;
+                height: 78px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url(/wp-content/themes/adveplay-new/img/arrow-black-mobile.svg);
+                z-index: 2;
+
+                @include media-up(xl) {
+                    background-image: url(/wp-content/themes/adveplay-new/img/arrow-black.svg);
+                    width: 94px;
+                    height: 160px;
+                    bottom: -100px;
+                }
+            }
+
+            span {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 29px;
+                color: var(--text);
+                text-transform: uppercase;
+                font-family: "QUARTZO";
+
+                @include media-up(xl) {
+                    font-size: 53px;
+                    line-height: 63px;
+                }
+            }
+        }
+
+        .link {
+            color: var(--section);
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: 700;
+            text-decoration: underline;
+            z-index: 2;
+            position: relative;
+
+            @include media-up(xl) {
+                font-size: 38px;
+                line-height: 46px;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.body_mc {
+
+    .section-block.questions {
+
+        .section-content {
+
+            h2 {
+
+                .title-back {
+
+                    .title-text {
+                        height: 23px;
+
+                        @include media-up(xl) {
+                            height: 54px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    padding: 13px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--text);
+
+    @include media-up(xl) {
+        padding: 27px 76px;
+        height: 86px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        width: 128px;
+
+        @include media-up(xl) {
+            width: 279px;
+        }
+    }
+
+    span {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 13px;
+        color: var(--footer-text);
+
+        @include media-up(xl) {
+            font-size: 30px;
+            line-height: 28px;
+        }
+    }
+}
